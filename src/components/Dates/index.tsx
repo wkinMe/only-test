@@ -25,7 +25,7 @@ export default function Dates() {
     }
     
     return <div className={styles.datesContainer}>
-        <CirclePoint num={1} description="test"/>
+        <CirclePoint num={1} description="test" isActive={true}/>
         <h2>Исторические даты</h2>
         <div className={styles.content}>
             <div className={styles.circle}></div>
