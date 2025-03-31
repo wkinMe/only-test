@@ -1,0 +1,86 @@
+.datesContainer {
+    max-width: 1440px;
+    margin: 0 auto;
+
+    .content {
+        position: relative;
+    }
+
+    .circle {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 536px;
+        height: 530px;
+        border-radius: 50%;
+        border: 1px solid 
+    }
+
+    .datesPagination {
+        display: grid;
+        row-gap: 20px;
+        max-width: 130px;
+        grid-template-columns: repeat(2, 1fr);
+
+        & .datesCounter {
+            color: rgba(66, 86, 122, 1);
+            text-align: left;
+            grid-column: 1/3;
+        }
+
+        button {
+            background: none;
+            display: grid;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 1px solid rgba(66, 86, 122, 0.5);
+        }
+    }
+
+    h1 {
+        display: inline-flex;
+        position: relative;
+        top: 50px;
+        gap: 70px;
+        text-align: center;
+        font-size: 200px;
+        line-height: 160px;
+
+        & .dateStart {
+            color: #3877EE;
+        }
+
+        & .dateEnd {
+            color: #EF5DA8;
+        }
+    }
+
+    h2 {
+        position: relative;
+        max-width: 353px;
+        font-size: 56px;
+        line-height: 120%;
+        font-weight: 700;
+        height: 120px;
+        padding-left: 78px;
+        color: #42567A;
+
+        &::before {
+            position: absolute;
+            left: 0;
+            top: 0;
+            content: "";
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(180deg, #3877EE -5%, #EF5DA8 85%);
+        }
+    }
+}
+
+
+.disabled {
+    opacity: 0.5;
+}
