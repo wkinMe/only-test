@@ -4,6 +4,8 @@ import CirclePoint from "../CirclePoint";
 import styles from "./style.module.scss";
 import clsx from "clsx";
 
+import { Swiper, SwiperSlide } from "swiper/react";
+
 const CircleContainer = styled.div`
   position: absolute;
   z-index: 2;
