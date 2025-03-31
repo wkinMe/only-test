@@ -1,6 +1,7 @@
 import { useState } from "react"
 import styles from "./style.module.scss"
 import { clsx } from "clsx";
+import CirclePoint from "../CirclePoint";
 
 export default function Dates() {
     const [startDate, setStartDate] = useState(2015);
@@ -24,6 +25,7 @@ export default function Dates() {
     }
     
     return <div className={styles.datesContainer}>
+        <CirclePoint num={1} description="test"/>
         <h2>Исторические даты</h2>
         <div className={styles.content}>
             <div className={styles.circle}></div>

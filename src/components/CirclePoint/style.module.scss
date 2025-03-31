@@ -1,0 +1,64 @@
+.point {
+    position: relative;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    width: 6px;
+    height: 6px;
+    cursor: pointer;
+    border: 1px solid rgba(66, 86, 122, 1);
+    border-radius: 50%;
+    transition: all .4s ease-in-out;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 6px;
+        height: 6px;
+        background-color: rgba(66, 86, 122, 1);
+        border-radius: 50%;
+        transition: all 0.4s ease-in-out;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        width: 6px;
+        height: 6px;
+        background-color: rgba(255,255,255);
+        border-radius: 50%;
+        transition: all 0.4s ease-in-out; 
+    }
+
+    .number {
+        z-index: 3;
+        line-height: 30px;
+        font-size: 20px;
+        color: rgba(66, 86, 122, 1);
+        position: absolute;
+        left: -3px;
+
+        opacity: 0;
+        transition: all .4s ease-in-out;
+    }
+
+    &:hover {
+        &::before {
+            transform: scale(10);
+        }
+    
+        &::after {
+            opacity: 1;
+            transform: scale(9.5)
+        }
+
+        .number {
+            opacity: 1;
+        }
+    }
+}
