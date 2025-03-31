@@ -3,8 +3,10 @@ import styled from "styled-components";
 import CirclePoint from "../CirclePoint";
 import styles from "./style.module.scss";
 import clsx from "clsx";
+import periods from "../../db/periods.json";
 
 import { Swiper, SwiperSlide } from "swiper/react";
+import Slider from "../Slider";
 
 const CircleContainer = styled.div`
   position: absolute;
@@ -47,50 +49,55 @@ const PointContent = styled.div<{ isActive: boolean; compensationAngle: number }
 export default function Dates() {
   const [startDate, setStartDate] = useState(2015);
   const [endDate, setEndDate] = useState(2022);
-  const [datesCount, setDatesCount] = useState(6);
-  const [currentDate, setCurrentDate] = useState(1);
+
+
+  const [currentPeriodId, setCurrentPeriodId] = useState(1);
   const [rotationAngle, setRotationAngle] = useState(0);
 
-  const prevButtonClass = clsx(currentDate === 1 && styles.disabled);
-  const nextButtonClass = clsx(currentDate === datesCount && styles.disabled);
+  const periodsArr = periods.periods;
+  const periodsCount = periodsArr.length;
+
+  const prevButtonClass = clsx(currentPeriodId === 1 && styles.disabled);
+  const nextButtonClass = clsx(currentPeriodId === periodsCount && styles.disabled);
 
   const handlePrevClick = () => {
-    if (currentDate > 1) {
-      setCurrentDate((prev) => prev - 1);
-      setRotationAngle((prev) => ((prev + 360 / datesCount) % 360));
+    if (currentPeriodId > 1) {
+      setCurrentPeriodId((prev) => prev - 1);
+      setRotationAngle((prev) => ((prev + 360 / periodsCount) % 360));
     }
   };
 
   const handleNextClick = () => {
-    if (currentDate < datesCount) {
-      setCurrentDate((prev) => prev + 1);
-      setRotationAngle((prev) => ((prev - 360 / datesCount) % 360));
+    if (currentPeriodId < periodsCount) {
+      setCurrentPeriodId((prev) => prev + 1);
+      setRotationAngle((prev) => ((prev - 360 / periodsCount) % 360));
     }
   };
 
   const handlePointClick = (selectedNum: number) => {
-    const anglePerPoint = 360 / datesCount;
-    const steps = selectedNum - currentDate;
+    const anglePerPoint = 360 / periodsCount;
+    const steps = selectedNum - currentPeriodId;
     let newRotationAngle = rotationAngle - steps * anglePerPoint;
 
     // Приводим угол к диапазону [0, 360)
     newRotationAngle = ((newRotationAngle % 360) + 360) % 360;
 
-    setCurrentDate(selectedNum);
+    setCurrentPeriodId(selectedNum);
     setRotationAngle(newRotationAngle);
   };
 
   const radius = 536 / 2; // Радиус круга
 
-  const points = Array.from({ length: datesCount }, (_, index) => {
-    const angle = (360 / datesCount) * index;
+  const points = periodsArr.map((i, idx) => {
+    const angle = (360 / periodsCount) * idx;
     return {
-      num: index + 1,
-      description: `description ${index + 1}`,
-      isActive: index + 1 === currentDate,
+      num: idx + 1,
+      description: i.theme,
+      isActive: idx + 1 === currentPeriodId,
       angle,
     };
-  });
+  })
+
 
   const adjustedRotationAngle = rotationAngle;
 
@@ -101,7 +108,7 @@ export default function Dates() {
         <CircleContainer>
           <StyledCircle rotationAngle={adjustedRotationAngle}>
             {points.map(({ num, description, isActive, angle }) => {
-              const compensationAngle = (currentDate - num) * 60;
+              const compensationAngle = (currentPeriodId - num) * 60;
 
               return (
                 <PointWrapper key={num} angle={angle} radius={radius} isActive={isActive}>
@@ -122,8 +129,8 @@ export default function Dates() {
           <span className={styles.dateEnd}>{endDate}</span>
         </h1>
       </div>
-      <div className={styles.datesPagination}>
-        <span className={styles.datesCounter}>0{currentDate}/0{datesCount}</span>
+      <div className={styles.periodsPagination}>
+        <span className={styles.periodsCounter}>0{currentPeriodId}/0{periodsCount}</span>
         <button onClick={handlePrevClick} className={prevButtonClass}>
           {"<"}
         </button>
@@ -131,6 +138,7 @@ export default function Dates() {
           {">"}
         </button>
       </div>
+      <Slider events={periods.periods[0].events} />
     </div>
   );
 }

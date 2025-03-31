@@ -16,13 +16,13 @@
         border: 1px solid 
     }
 
-    .datesPagination {
+    .periodsPagination {
         display: grid;
         row-gap: 20px;
         max-width: 130px;
         grid-template-columns: repeat(2, 1fr);
 
-        & .datesCounter {
+        & .periodsCounter {
             color: rgba(66, 86, 122, 1);
             text-align: left;
             grid-column: 1/3;
@@ -39,6 +39,10 @@
             border-radius: 50%;
             border: 1px solid rgba(66, 86, 122, 0.5);
         }
+    }
+
+    .slider {
+        height: 135px;
     }
 
     h1 {
