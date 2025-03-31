@@ -1,6 +1,6 @@
 // Импорты
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper/modules';
+import { Navigation, FreeMode } from 'swiper/modules';
 
 // Стили Swiper
 import 'swiper/scss';
@@ -24,8 +24,17 @@ export default function Slider({events}: SliderProps) {
                 navigation={{
                     nextEl: '.swiper-button-next',
                     prevEl: '.swiper-button-prev',
+
                 }}
-                modules={[Navigation]}
+                freeMode={{
+                    enabled: true,
+                    momentum: true,
+                    momentumRatio: 0.5,
+                    momentumVelocityRatio: 0.5,
+                    momentumBounce: true,
+                    sticky: false,
+                }}
+                modules={[Navigation, FreeMode]}
             >
                 {events.map((item, index) => (
                     <SwiperSlide key={index}>
