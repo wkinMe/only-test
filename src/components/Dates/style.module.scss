@@ -25,6 +25,23 @@
             background: linear-gradient(180deg, #3877ee -5%, #ef5da8 85%);
         }
     }
+
+    .sliderPaginationContainer {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .themeHeader {
+        margin-top: 57px;
+        padding-bottom: 25px;
+
+        border-bottom: 1px solid rgba(66, 86, 122, 0.5);
+
+        span {
+            font-size: 24px;
+            color: rgba(66, 86, 122, 1);
+        }
+    }
 }
 
 @media screen and (max-width: 1000px) {
@@ -43,6 +60,10 @@
             &::before {
                 display: none;
             }
+        }
+
+        .sliderPaginationContainer {
+            flex-direction: column-reverse;
         }
     }
 }

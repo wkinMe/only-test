@@ -18,7 +18,10 @@ export default function Dates() {
     );
     const { startDate, endDate } = useYears(periodsArr, currentPeriodId);
 
-    const currentEvents = periodsArr[currentPeriodId - 1].events;
+    const currentPeriod = periodsArr[currentPeriodId - 1];
+    const currentEvents = currentPeriod.events;
+    const currentTheme = currentPeriod.theme;
+    const isMobile = window.innerWidth < 1000;
 
     const changePoint = (selectedNum: number) => {
         const anglePerPoint = 360 / periodsCount;
@@ -54,14 +57,21 @@ export default function Dates() {
                 />
                 <DatesText startDate={startDate} endDate={endDate} />
             </div>
-            <Pagination
-                current={currentPeriodId}
-                length={periodsCount}
-                handleNextClick={handleNextClick}
-                handlePrevClick={handlePrevClick}
-                handleBulletClick={(num) => setCurrentPeriodId(num)}
-            />
-            <Slider events={currentEvents} />
+            <div className={styles.sliderPaginationContainer}>
+                <Pagination
+                    current={currentPeriodId}
+                    length={periodsCount}
+                    handleNextClick={handleNextClick}
+                    handlePrevClick={handlePrevClick}
+                    handleBulletClick={(num) => setCurrentPeriodId(num)}
+                />
+                <Slider events={currentEvents} />
+                {isMobile && (
+                    <div className={styles.themeHeader}>
+                        <span>{currentTheme}</span>
+                    </div>
+                )}
+            </div>
         </div>
     );
 }

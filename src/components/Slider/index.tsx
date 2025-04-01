@@ -30,6 +30,7 @@ export default function Slider({ events }: SliderProps) {
                     momentumBounce: true,
                     sticky: false,
                 }}
+                spaceBetween={30}
                 modules={[Navigation, FreeMode]}>
                 {events.map((item, index) => (
                     <SwiperSlide key={index}>

@@ -1,11 +1,17 @@
 .swiper {
     width: 90%;
+    min-height: 300px;
+
+    &-wrapper {
+        height: auto;
+    }
 
     &-slide {
         display: flex;
         align-items: center;
         justify-content: center;
         width: auto;
+        height: 100%;
     }
 
     &-button-next,
@@ -29,6 +35,15 @@
             color: rgba(56, 119, 238, 1);
             font-size: 16px;
             font-weight: bold;
+        }
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .swiper {
+        &-button-prev,
+        &-button-next {
+            display: none;
         }
     }
 }
