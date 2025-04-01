@@ -6,23 +6,32 @@ import Circle from '../Circle';
 import { usePeriod } from '../../hooks/usePeriod';
 import { useCircle } from '../../hooks/useCircle';
 import { useYears } from '../../hooks/useYears';
+import Pagination from '../Pagination';
+import DatesText from '../DatesText';
 
 export default function Dates() {
     const { currentPeriodId, setCurrentPeriodId, periodsArr, periodsCount } =
         usePeriod();
-    const {
-        rotationAngle,
-        setRotationAngle,
-        points,
-        radius,
-        handlePointClick,
-    } = useCircle();
-    const { startDate, endDate, setYearsBoundary } = useYears();
-
-    const prevButtonClass = clsx(currentPeriodId === 1 && styles.disabled);
-    const nextButtonClass = clsx(
-        currentPeriodId === periodsCount && styles.disabled,
+    const { rotationAngle, setRotationAngle, points, radius } = useCircle(
+        periodsArr,
+        periodsCount,
+        currentPeriodId,
     );
+    const { startDate, endDate, setYearsBoundary } = useYears(
+        periodsArr,
+        currentPeriodId,
+    );
+    
+    const handlePointClick = (selectedNum: number) => {
+        const anglePerPoint = 360 / periodsCount;
+        const steps = selectedNum - currentPeriodId;
+        let newRotationAngle = rotationAngle - steps * anglePerPoint;
+
+        newRotationAngle = ((newRotationAngle % 360) + 360) % 360;
+
+        setCurrentPeriodId(selectedNum);
+        setRotationAngle(newRotationAngle);
+    };
 
     const handlePrevClick = () => {
         if (currentPeriodId > 1) {
@@ -55,22 +64,14 @@ export default function Dates() {
                     handlePointClick={handlePointClick}
                     currentPeriodId={currentPeriodId}
                 />
-                <h1>
-                    <span className={styles.dateStart}>{startDate}</span>{' '}
-                    <span className={styles.dateEnd}>{endDate}</span>
-                </h1>
+                <DatesText startDate={startDate} endDate={endDate} />
             </div>
-            <div className={styles.periodsPagination}>
-                <span className={styles.periodsCounter}>
-                    0{currentPeriodId}/0{periodsCount}
-                </span>
-                <button onClick={handlePrevClick} className={prevButtonClass}>
-                    {'<'}
-                </button>
-                <button onClick={handleNextClick} className={nextButtonClass}>
-                    {'>'}
-                </button>
-            </div>
+            <Pagination
+                current={currentPeriodId}
+                length={periodsCount}
+                handleNextClick={handleNextClick}
+                handlePrevClick={handlePrevClick}
+            />
             <Slider events={periodsArr[0].events} />
         </div>
     );

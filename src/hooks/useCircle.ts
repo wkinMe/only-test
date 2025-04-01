@@ -1,9 +1,7 @@
 import { useState } from 'react';
-import { usePeriod } from './usePeriod';
+import { PeriodItem } from '../types';
 
-export const useCircle = () => {
-    const { periodsArr, periodsCount, currentPeriodId, setCurrentPeriodId } =
-        usePeriod();
+export const useCircle = (periodsArr: PeriodItem[], periodsCount: number, currentPeriodId: number) => {
 
     const [rotationAngle, setRotationAngle] = useState(0);
     const radius = 536 / 2; // Радиус круга
@@ -18,23 +16,10 @@ export const useCircle = () => {
         };
     });
 
-    const handlePointClick = (selectedNum: number) => {
-        const anglePerPoint = 360 / periodsCount;
-        const steps = selectedNum - currentPeriodId;
-        let newRotationAngle = rotationAngle - steps * anglePerPoint;
-
-        // Приводим угол к диапазону [0, 360)
-        newRotationAngle = ((newRotationAngle % 360) + 360) % 360;
-
-        setCurrentPeriodId(selectedNum);
-        setRotationAngle(newRotationAngle);
-    };
-
     return {
         radius,
         points,
         rotationAngle,
-        setRotationAngle,
-        handlePointClick,
+        setRotationAngle
     };
 };
