@@ -1,0 +1,19 @@
+h1 {
+    display: inline-flex;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 50px;
+    gap: 70px;
+    text-align: center;
+    font-size: 200px;
+    line-height: 160px;
+
+    & .dateStart {
+        color: #3877ee;
+    }
+
+    & .dateEnd {
+        color: #ef5da8;
+    }
+}

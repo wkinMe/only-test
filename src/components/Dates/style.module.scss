@@ -1,0 +1,45 @@
+.datesContainer {
+    max-width: 1440px;
+    margin: 0 auto;
+
+    .content {
+        position: relative;
+    }
+
+    .circle {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 536px;
+        height: 530px;
+        border-radius: 50%;
+        border: 1px solid;
+    }
+
+    .slider {
+        height: 135px;
+    }
+
+
+
+    h2 {
+        position: relative;
+        max-width: 353px;
+        font-size: 56px;
+        line-height: 120%;
+        font-weight: 700;
+        height: 120px;
+        padding-left: 78px;
+        color: #42567a;
+
+        &::before {
+            position: absolute;
+            left: 0;
+            top: 0;
+            content: '';
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(180deg, #3877ee -5%, #ef5da8 85%);
+        }
+    }
+}
