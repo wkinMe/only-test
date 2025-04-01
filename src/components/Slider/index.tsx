@@ -1,4 +1,4 @@
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react';
 import { Navigation, FreeMode } from 'swiper/modules';
 
 import 'swiper/scss';
@@ -10,9 +10,10 @@ import Slide from './Slide';
 
 interface SliderProps {
     events: EventItem[];
+    ref: React.Ref<SwiperRef>;
 }
 
-export default function Slider({ events }: SliderProps) {
+export default function Slider({ events, ref }: SliderProps) {
     return (
         <div style={{ position: 'relative' }}>
             <Swiper
@@ -21,6 +22,7 @@ export default function Slider({ events }: SliderProps) {
                     nextEl: '.swiper-button-next',
                     prevEl: '.swiper-button-prev',
                 }}
+                ref={ref}
                 slidesPerView={'auto'}
                 freeMode={{
                     enabled: true,
