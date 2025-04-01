@@ -17,7 +17,7 @@ export default function Dates() {
         currentPeriodId,
     );
     const { startDate, endDate } = useYears(periodsArr, currentPeriodId);
-    
+
     const currentEvents = periodsArr[currentPeriodId - 1].events;
 
     const changePoint = (selectedNum: number) => {
@@ -59,6 +59,7 @@ export default function Dates() {
                 length={periodsCount}
                 handleNextClick={handleNextClick}
                 handlePrevClick={handlePrevClick}
+                handleBulletClick={(num) => setCurrentPeriodId(num)}
             />
             <Slider events={currentEvents} />
         </div>

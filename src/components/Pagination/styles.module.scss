@@ -21,8 +21,50 @@
         border-radius: 50%;
         border: 1px solid rgba(66, 86, 122, 0.5);
     }
+
+    .bullets {
+        position: absolute;
+        list-style-type: none;
+        display: flex;
+        align-self: center;
+        gap: 10px;
+
+        .bullet {
+            background-color: rgba(66, 86, 122, 0.5);
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+        }
+
+        .selected {
+            background-color: rgba(66, 86, 122, 1);
+        }
+    }
 }
 
 .disabled {
     opacity: 0.5;
+}
+
+@media screen and (max-width: 1000px) {
+    .periodsPagination {
+        grid-template-columns: 1fr;
+        position: relative;
+        max-width: 100%;
+
+        .bullets {
+            left: 50%;
+            transform: translate(-50%);
+        }
+
+        .buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        button {
+            width: 25px;
+            height: 25px;
+        }
+    }
 }
