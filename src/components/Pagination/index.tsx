@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import styles from './styles.module.scss';
+import { MOBILE_BREAKPOINT } from '../../config/constants/constants';
 
 interface PaginationProps {
     current: number;
@@ -19,7 +20,7 @@ export default function Pagination({
     const prevButtonClass = clsx(current === 1 && styles.disabled);
     const nextButtonClass = clsx(current === length && styles.disabled);
 
-    const isBulletsShown = window.innerWidth < 1000;
+    const isBulletsShown = window.innerWidth < MOBILE_BREAKPOINT;
 
     return (
         <div className={styles.periodsPagination}>

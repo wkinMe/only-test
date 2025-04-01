@@ -1,4 +1,4 @@
-import { Point } from '../../types';
+import { Point } from '../../config/types';
 import CirclePoint from '../Point/CirclePoint';
 import PointContent from '../Point/PointContent';
 import PointWrapper from '../Point/PointWrapper';

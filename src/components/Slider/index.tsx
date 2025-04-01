@@ -5,7 +5,7 @@ import 'swiper/scss';
 import 'swiper/css/navigation';
 import './style.scss';
 
-import { EventItem } from '../../types';
+import { EventItem } from '../../config/types';
 import Slide from './Slide';
 
 interface SliderProps {

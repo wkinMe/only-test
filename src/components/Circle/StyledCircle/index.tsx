@@ -1,11 +1,12 @@
 import styled from 'styled-components';
+import { CIRCLE_SIZE } from '../../../config/constants/constants';
 
 const StyledCircle = styled.div<{ rotationAngle: number }>`
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 536px;
-    height: 536px;
+    width: ${CIRCLE_SIZE}px;
+    height: ${CIRCLE_SIZE}px;
     border-radius: 50%;
     border: 1px solid #ccc;
     transform: translate(-50%, -50%)

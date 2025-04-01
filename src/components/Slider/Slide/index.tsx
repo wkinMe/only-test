@@ -1,4 +1,4 @@
-import { EventItem } from '../../../types';
+import { EventItem } from '../../../config/types';
 import styles from './styles.module.scss';
 
 interface SlideProps {

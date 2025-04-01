@@ -10,6 +10,10 @@ import Pagination from '../Pagination';
 import DatesText from '../DatesText';
 import { useRef, useState } from 'react';
 import { SwiperRef } from 'swiper/react';
+import {
+    CIRCLE_ROTATION_TIME,
+    EASE_FUNCTION,
+} from '../../config/constants/constants';
 
 export default function Dates() {
     const { currentPeriodId, setCurrentPeriodId, periodsArr, periodsCount } =
@@ -38,10 +42,11 @@ export default function Dates() {
             setRotationAngle(newRotationAngle);
         }
 
-        const duration = 0.3;
-        const ease = 'power2.inOut';
-
         const swiperWrapper = sliderRef.current?.swiper.wrapperEl;
+
+        const duration = CIRCLE_ROTATION_TIME;
+        const ease = EASE_FUNCTION;
+
         swiperWrapper &&
             gsap.to(swiperWrapper, {
                 transform: 'translateX(0)',

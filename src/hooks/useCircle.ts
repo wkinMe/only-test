@@ -1,8 +1,11 @@
 import { useState } from 'react';
-import { PeriodItem } from '../types';
+import { PeriodItem } from '../config/types';
 
-export const useCircle = (periodsArr: PeriodItem[], periodsCount: number, currentPeriodId: number) => {
-
+export const useCircle = (
+    periodsArr: PeriodItem[],
+    periodsCount: number,
+    currentPeriodId: number,
+) => {
     const [rotationAngle, setRotationAngle] = useState(0);
     const radius = 536 / 2; // Радиус круга
 
@@ -20,6 +23,6 @@ export const useCircle = (periodsArr: PeriodItem[], periodsCount: number, curren
         radius,
         points,
         rotationAngle,
-        setRotationAngle
+        setRotationAngle,
     };
 };
