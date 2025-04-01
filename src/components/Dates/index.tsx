@@ -5,7 +5,6 @@ import styles from "./style.module.scss";
 import clsx from "clsx";
 import periods from "../../db/periods.json";
 
-import { Swiper, SwiperSlide } from "swiper/react";
 import Slider from "../Slider";
 
 const CircleContainer = styled.div`
@@ -47,29 +46,41 @@ const PointContent = styled.div<{ isActive: boolean; compensationAngle: number }
 `;
 
 export default function Dates() {
-  const [startDate, setStartDate] = useState(2015);
-  const [endDate, setEndDate] = useState(2022);
-
-
   const [currentPeriodId, setCurrentPeriodId] = useState(1);
   const [rotationAngle, setRotationAngle] = useState(0);
 
   const periodsArr = periods.periods;
   const periodsCount = periodsArr.length;
 
+  const years = periodsArr[currentPeriodId - 1].events.map(i => i.year);
+  const [startDate, setStartDate] = useState(Math.min(...years));
+  const [endDate, setEndDate] = useState(Math.max(...years));
+
   const prevButtonClass = clsx(currentPeriodId === 1 && styles.disabled);
   const nextButtonClass = clsx(currentPeriodId === periodsCount && styles.disabled);
-
+  
+  const setYearsBoundary = (periodId: number) => {
+    const years = periodsArr[periodId - 1].events.map(i => i.year)
+    setStartDate(Math.min(...years));
+    setEndDate(Math.max(...years));
+  }
+  
   const handlePrevClick = () => {
     if (currentPeriodId > 1) {
-      setCurrentPeriodId((prev) => prev - 1);
+      setCurrentPeriodId((prev) => {
+        setYearsBoundary(prev - 1);
+        return prev - 1
+      });
       setRotationAngle((prev) => ((prev + 360 / periodsCount) % 360));
     }
   };
 
   const handleNextClick = () => {
     if (currentPeriodId < periodsCount) {
-      setCurrentPeriodId((prev) => prev + 1);
+      setCurrentPeriodId((prev) => {
+        setYearsBoundary(prev + 1);
+        return prev + 1;
+      });
       setRotationAngle((prev) => ((prev - 360 / periodsCount) % 360));
     }
   };
@@ -98,15 +109,12 @@ export default function Dates() {
     };
   })
 
-
-  const adjustedRotationAngle = rotationAngle;
-
   return (
     <div className={styles.datesContainer}>
       <h2>Исторические даты</h2>
       <div className={styles.content}>
         <CircleContainer>
-          <StyledCircle rotationAngle={adjustedRotationAngle}>
+          <StyledCircle rotationAngle={rotationAngle}>
             {points.map(({ num, description, isActive, angle }) => {
               const compensationAngle = (currentPeriodId - num) * 60;
 
