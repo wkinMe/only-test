@@ -17,7 +17,7 @@ export default function Dates() {
         currentPeriodId,
     );
     const { startDate, endDate } = useYears(periodsArr, currentPeriodId);
-
+    
     const currentEvents = periodsArr[currentPeriodId - 1].events;
 
     const changePoint = (selectedNum: number) => {

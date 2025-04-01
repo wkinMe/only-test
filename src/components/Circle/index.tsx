@@ -1,7 +1,7 @@
 import { Point } from '../../types';
-import CirclePoint from '../CirclePoint/CirclePoint';
-import PointContent from '../CirclePoint/PointContent';
-import PointWrapper from '../CirclePoint/PointWrapper';
+import CirclePoint from '../Point/CirclePoint';
+import PointContent from '../Point/PointContent';
+import PointWrapper from '../Point/PointWrapper';
 import CircleContainer from './CircleContainer';
 import StyledCircle from './StyledCircle';
 
