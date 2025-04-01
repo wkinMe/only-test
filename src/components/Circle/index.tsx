@@ -10,7 +10,7 @@ interface CircleProps {
     currentPeriodId: number;
     radius: number;
     rotationAngle: number;
-    handlePointClick: (num: number) => void;
+    changePoint: (num: number) => void;
 }
 
 export default function Circle({
@@ -18,7 +18,7 @@ export default function Circle({
     currentPeriodId,
     radius,
     rotationAngle,
-    handlePointClick,
+    changePoint,
 }: CircleProps) {
     return (
         <CircleContainer>
@@ -35,7 +35,7 @@ export default function Circle({
                             <PointContent
                                 isActive={isActive}
                                 compensationAngle={compensationAngle}
-                                onClick={() => handlePointClick(num)}>
+                                onClick={() => changePoint(num)}>
                                 <CirclePoint
                                     num={num}
                                     description={description}
