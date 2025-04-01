@@ -6,29 +6,12 @@
         position: relative;
     }
 
-    .circle {
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 536px;
-        height: 530px;
-        border-radius: 50%;
-        border: 1px solid;
-    }
-
-    .slider {
-        height: 135px;
-    }
-
-
-
     h2 {
         position: relative;
         max-width: 353px;
         font-size: 56px;
         line-height: 120%;
         font-weight: 700;
-        height: 120px;
         padding-left: 78px;
         color: #42567a;
 
@@ -40,6 +23,26 @@
             width: 5px;
             height: 100%;
             background: linear-gradient(180deg, #3877ee -5%, #ef5da8 85%);
+        }
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .datesContainer {
+        margin-left: 20px;
+
+        .content {
+            margin-top: 56px;
+        }
+
+        h2 {
+            width: 136px;
+            padding: 0;
+            font-size: 20px / 320px * 100vw;
+
+            &::before {
+                display: none;
+            }
         }
     }
 }

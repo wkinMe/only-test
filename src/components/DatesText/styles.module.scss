@@ -17,3 +17,14 @@ h1 {
         color: #ef5da8;
     }
 }
+
+@media screen and (max-width: 1000px) {
+    h1 {
+        position:static;
+        display: inline;
+        left: 0;
+        line-height: 30px;
+        transform: none;
+        font-size: 56px / 320px * 100vw;
+    }
+}

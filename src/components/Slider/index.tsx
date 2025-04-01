@@ -16,12 +16,12 @@ export default function Slider({ events }: SliderProps) {
     return (
         <div style={{ position: 'relative' }}>
             <Swiper
-                slidesPerView={3}
                 grabCursor={true}
                 navigation={{
                     nextEl: '.swiper-button-next',
                     prevEl: '.swiper-button-prev',
                 }}
+                slidesPerView={'auto'}
                 freeMode={{
                     enabled: true,
                     momentum: true,
