@@ -6,8 +6,8 @@ const PointWrapper = styled.div<{
     isActive: boolean;
 }>`
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 49.3%;
+  left: 49.3%;
   transform: rotate(${(props) => props.angle - 45}deg) translate(${(props) => props.radius}px);
   display: flex;
   align-i

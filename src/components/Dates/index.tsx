@@ -9,6 +9,7 @@ import { useYears } from '../../hooks/useYears';
 import Pagination from '../Pagination';
 import DatesText from '../DatesText';
 import { useRef, useState } from 'react';
+import { SwiperRef } from 'swiper/react';
 
 export default function Dates() {
     const { currentPeriodId, setCurrentPeriodId, periodsArr, periodsCount } =
@@ -25,7 +26,7 @@ export default function Dates() {
     const themeHeaderRef = useRef(null);
     const currentTheme = currentPeriod.theme;
     const isMobile = window.innerWidth < 1000;
-    const sliderRef = useRef(null);
+    const sliderRef = useRef<SwiperRef>(null);
 
     const changePoint = (selectedNum: number) => {
         const anglePerPoint = 360 / periodsCount;
@@ -39,6 +40,13 @@ export default function Dates() {
 
         const duration = 0.3;
         const ease = 'power2.inOut';
+
+        const swiperWrapper = sliderRef.current?.swiper.wrapperEl;
+        swiperWrapper &&
+            gsap.to(swiperWrapper, {
+                transform: 'translateX(0)',
+                delay: duration,
+            });
 
         themeHeaderRef.current &&
             gsap.to(themeHeaderRef.current, {
