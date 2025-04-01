@@ -6,44 +6,7 @@ import clsx from "clsx";
 import periods from "../../db/periods.json";
 
 import Slider from "../Slider";
-
-const CircleContainer = styled.div`
-  position: absolute;
-  z-index: 2;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 536px; // Увеличиваем ширину
-  height: 536px; // Увеличиваем высоту
-`;
-
-const StyledCircle = styled.div<{ rotationAngle: number }>`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 536px; // Исходный размер круга
-  height: 536px; // Исходный размер круга
-  border-radius: 50%;
-  border: 1px solid #ccc;
-  transform: translate(-50%, -50%) rotate(${(props) => props.rotationAngle}deg); // Центрируем и добавляем поворот
-  transition: transform 0.5s ease-in-out;
-  will-change: transform; // Оптимизация для анимации
-`;
-
-const PointWrapper = styled.div<{ angle: number; radius: number; isActive: boolean }>`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: rotate(${(props) => props.angle - 45}deg) translate(${(props) => props.radius}px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-const PointContent = styled.div<{ isActive: boolean; compensationAngle: number }>`
-  transition: all 0.4s ease-in-out;
-  transform: rotate(${(props) => props.compensationAngle + 45}deg);
-  cursor: pointer;
-`;
+import Circle from "../Circle";
 
 export default function Dates() {
   const [currentPeriodId, setCurrentPeriodId] = useState(1);
@@ -51,7 +14,9 @@ export default function Dates() {
 
   const periodsArr = periods.periods;
   const periodsCount = periodsArr.length;
-
+  
+  console.log(periodsArr[currentPeriodId - 1]);
+  
   const years = periodsArr[currentPeriodId - 1].events.map(i => i.year);
   const [startDate, setStartDate] = useState(Math.min(...years));
   const [endDate, setEndDate] = useState(Math.max(...years));
@@ -113,25 +78,7 @@ export default function Dates() {
     <div className={styles.datesContainer}>
       <h2>Исторические даты</h2>
       <div className={styles.content}>
-        <CircleContainer>
-          <StyledCircle rotationAngle={rotationAngle}>
-            {points.map(({ num, description, isActive, angle }) => {
-              const compensationAngle = (currentPeriodId - num) * 60;
-
-              return (
-                <PointWrapper key={num} angle={angle} radius={radius} isActive={isActive}>
-                  <PointContent
-                    isActive={isActive}
-                    compensationAngle={compensationAngle}
-                    onClick={() => handlePointClick(num)}
-                  >
-                    <CirclePoint num={num} description={description} isActive={isActive} />
-                  </PointContent>
-                </PointWrapper>
-              );
-            })}
-          </StyledCircle>
-        </CircleContainer>
+        <Circle points={points} radius={radius} rotationAngle={rotationAngle} handlePointClick={handlePointClick} currentPeriodId={currentPeriodId}/>
         <h1>
           <span className={styles.dateStart}>{startDate}</span>{" "}
           <span className={styles.dateEnd}>{endDate}</span>

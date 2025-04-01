@@ -9,7 +9,6 @@ interface CirclePointProps {
 
 export default function CirclePoint({num, description, isActive}: CirclePointProps) {
     const className = clsx(styles.point, isActive && styles.active)
-
     return <div className={className}>
         <span className={styles.number}>{num}</span>
         <span className={styles.description}>{description}</span>
