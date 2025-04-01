@@ -1,13 +1,20 @@
 .datesContainer {
+    padding-top: 170px;
     max-width: 1440px;
+
     margin: 0 auto;
 
     .content {
         position: relative;
+
+        &Container {
+            padding-top: 45px;
+        }
     }
 
     h2 {
-        position: relative;
+        margin: 0;
+        position: absolute;
         max-width: 353px;
         font-size: 56px;
         line-height: 120%;
@@ -46,6 +53,7 @@
 
 @media screen and (max-width: 1000px) {
     .datesContainer {
+        padding-top: 0;
         margin-left: 20px;
 
         .content {
@@ -53,6 +61,7 @@
         }
 
         h2 {
+            position: relative;
             width: 136px;
             padding: 0;
             font-size: 20px / 320px * 100vw;

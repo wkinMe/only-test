@@ -102,16 +102,18 @@ export default function Dates() {
 
     return (
         <div className={styles.datesContainer}>
-            <h2>Исторические даты</h2>
             <div className={styles.content}>
-                <Circle
-                    points={points}
-                    radius={radius}
-                    rotationAngle={rotationAngle}
-                    changePoint={changePoint}
-                    currentPeriodId={currentPeriodId}
-                />
-                <DatesText startDate={startDate} endDate={endDate} />
+                <h2>Исторические даты</h2>
+                <div className={styles.contentContainer}>
+                    <Circle
+                        points={points}
+                        radius={radius}
+                        rotationAngle={rotationAngle}
+                        changePoint={changePoint}
+                        currentPeriodId={currentPeriodId}
+                    />
+                    <DatesText startDate={startDate} endDate={endDate} />
+                </div>
             </div>
             <div className={styles.sliderPaginationContainer}>
                 <Pagination
