@@ -8,7 +8,7 @@
     cursor: pointer;
     border: 1px solid rgba(66, 86, 122, 1);
     border-radius: 50%;
-    transition: all .4s ease-in-out;
+    transition: all 0.4s ease-in-out;
 
     .description {
         opacity: 0;
@@ -36,9 +36,9 @@
         opacity: 0;
         width: 6px;
         height: 6px;
-        background-color: rgba(255,255,255);
+        background-color: rgba(255, 255, 255);
         border-radius: 50%;
-        transition: all 0.4s ease-in-out; 
+        transition: all 0.4s ease-in-out;
     }
 
     .number {
@@ -50,11 +50,11 @@
         left: -3px;
 
         opacity: 0;
-        transition: all .4s ease-in-out;
+        transition: all 0.4s ease-in-out;
     }
 
     .description {
-        transition: all .4s ease-in-out;
+        transition: all 0.4s ease-in-out;
         font-size: 20px;
         color: rgba(66, 86, 122, 1);
         font-weight: 700;
@@ -64,32 +64,30 @@
         &::before {
             transform: scale(10);
         }
-    
+
         &::after {
             opacity: 1;
-            transform: scale(9.5)
+            transform: scale(9.5);
         }
 
         .number {
             opacity: 1;
         }
     }
-
 }
-
 
 .active {
     .number {
         opacity: 1;
     }
-    
+
     &::before {
         transform: scale(10);
     }
 
     &::after {
         opacity: 1;
-        transform: scale(9.5)
+        transform: scale(9.5);
     }
 
     .description {

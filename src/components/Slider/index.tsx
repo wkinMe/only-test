@@ -1,8 +1,6 @@
-// Импорты
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, FreeMode } from 'swiper/modules';
 
-// Стили Swiper
 import 'swiper/scss';
 import 'swiper/css/navigation';
 import './style.scss';
@@ -17,7 +15,6 @@ interface SliderProps {
 export default function Slider({ events }: SliderProps) {
     return (
         <div style={{ position: 'relative' }}>
-            {/* Swiper компонент */}
             <Swiper
                 slidesPerView={3}
                 grabCursor={true}
@@ -41,15 +38,8 @@ export default function Slider({ events }: SliderProps) {
                 ))}
             </Swiper>
 
-            {/* Кнопки навигации */}
             <div className='swiper-button-prev' />
             <div className='swiper-button-next' />
         </div>
     );
 }
-
-// Для swiper-button-prev добавьте:
-// left: '10px';
-
-// Для swiper-button-next добавьте:
-// right: '10px';

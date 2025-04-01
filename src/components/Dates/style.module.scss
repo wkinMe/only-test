@@ -13,34 +13,14 @@
         width: 536px;
         height: 530px;
         border-radius: 50%;
-        border: 1px solid 
+        border: 1px solid;
     }
-
-
 
     .slider {
         height: 135px;
     }
 
-    h1 {
-        display: inline-flex;
-        position: relative;
-        left: 50%;
-        transform: translateX(-50%);
-        top: 50px;
-        gap: 70px;
-        text-align: center;
-        font-size: 200px;
-        line-height: 160px;
 
-        & .dateStart {
-            color: #3877EE;
-        }
-
-        & .dateEnd {
-            color: #EF5DA8;
-        }
-    }
 
     h2 {
         position: relative;
@@ -50,17 +30,16 @@
         font-weight: 700;
         height: 120px;
         padding-left: 78px;
-        color: #42567A;
+        color: #42567a;
 
         &::before {
             position: absolute;
             left: 0;
             top: 0;
-            content: "";
+            content: '';
             width: 5px;
             height: 100%;
-            background: linear-gradient(180deg, #3877EE -5%, #EF5DA8 85%);
+            background: linear-gradient(180deg, #3877ee -5%, #ef5da8 85%);
         }
     }
 }
-

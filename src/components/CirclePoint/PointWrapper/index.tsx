@@ -1,6 +1,10 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-const PointWrapper = styled.div<{ angle: number; radius: number; isActive: boolean }>`
+const PointWrapper = styled.div<{
+    angle: number;
+    radius: number;
+    isActive: boolean;
+}>`
   position: absolute;
   top: 50%;
   left: 50%;

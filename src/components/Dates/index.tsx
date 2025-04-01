@@ -1,5 +1,4 @@
 import styles from './style.module.scss';
-import clsx from 'clsx';
 
 import Slider from '../Slider';
 import Circle from '../Circle';
@@ -21,7 +20,7 @@ export default function Dates() {
         periodsArr,
         currentPeriodId,
     );
-    
+
     const handlePointClick = (selectedNum: number) => {
         const anglePerPoint = 360 / periodsCount;
         const steps = selectedNum - currentPeriodId;
