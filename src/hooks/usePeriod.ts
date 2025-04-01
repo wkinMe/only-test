@@ -6,6 +6,5 @@ export const usePeriod  = () => {
     const periodsArr = periods.periods;
     const periodsCount = periodsArr.length;
 
-
     return {currentPeriodId, setCurrentPeriodId, periodsArr, periodsCount}
 }

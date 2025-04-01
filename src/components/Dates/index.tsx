@@ -16,10 +16,9 @@ export default function Dates() {
         periodsCount,
         currentPeriodId,
     );
-    const { startDate, endDate, setYearsBoundary } = useYears(
-        periodsArr,
-        currentPeriodId,
-    );
+    const { startDate, endDate } = useYears(periodsArr, currentPeriodId);
+
+    const currentEvents = periodsArr[currentPeriodId - 1].events;
 
     const changePoint = (selectedNum: number) => {
         const anglePerPoint = 360 / periodsCount;
@@ -61,7 +60,7 @@ export default function Dates() {
                 handleNextClick={handleNextClick}
                 handlePrevClick={handlePrevClick}
             />
-            <Slider events={periodsArr[0].events} />
+            <Slider events={currentEvents} />
         </div>
     );
 }
