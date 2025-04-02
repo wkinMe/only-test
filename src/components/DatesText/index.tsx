@@ -12,6 +12,9 @@ export default function DatesText({ startDate, endDate }: DatesTextProps) {
     const startDateRef = useRef<HTMLSpanElement | null>(null);
     const endDateRef = useRef<HTMLSpanElement | null>(null);
 
+    const [displayedStartDate] = useState<number>(startDate);
+    const [displayedEndDate] = useState<number>(endDate);
+
     const isInitialRender = useRef(true);
 
     useEffect(() => {
@@ -45,8 +48,12 @@ export default function DatesText({ startDate, endDate }: DatesTextProps) {
 
     return (
         <h1>
-            <span ref={startDateRef} className={styles.dateStart}></span>{' '}
-            <span ref={endDateRef} className={styles.dateEnd}></span>
+            <span ref={startDateRef} className={styles.dateStart}>
+                {displayedStartDate}
+            </span>{' '}
+            <span ref={endDateRef} className={styles.dateEnd}>
+                {displayedEndDate}
+            </span>
         </h1>
     );
 }
