@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import styles from './styles.module.scss';
 import { CIRCLE_ROTATION_TIME, EASE_FUNCTION } from '@constants/constants';

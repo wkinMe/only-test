@@ -17,7 +17,8 @@
     }
 
     &-button-disabled {
-        display: none !important;
+        opacity: 0 !important;
+        transition: $circleAnimationTransition;
     }
 
     &-button-next,
