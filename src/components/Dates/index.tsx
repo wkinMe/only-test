@@ -1,6 +1,6 @@
 import styles from './style.module.scss';
 
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import { SwiperRef } from 'swiper/react';
 
 import { usePeriod } from '@hooks/usePeriod';
@@ -29,7 +29,7 @@ export default function Dates() {
     );
 
     const { startDate, endDate } = useYears(periodsArr, currentPeriodId);
-
+    
     const { sliderEvents, setSliderEvents } = useSliderEvents(
         currentPeriod.events,
     );

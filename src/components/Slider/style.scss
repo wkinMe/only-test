@@ -16,6 +16,10 @@
         height: 100%;
     }
 
+    &-button-disabled {
+        display: none !important;
+    }
+
     &-button-next,
     &-button-prev {
         background-color: #fff;

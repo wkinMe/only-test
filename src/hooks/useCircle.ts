@@ -7,7 +7,7 @@ export const useCircle = (
     currentPeriodId: number,
 ) => {
     const [rotationAngle, setRotationAngle] = useState(0);
-    const radius = CIRCLE_SIZE / 2; // Радиус круга
+    const radius = CIRCLE_SIZE / 2;
 
     const points = periodsArr.map((i, idx) => {
         const angle = (360 / periodsArr.length) * idx;

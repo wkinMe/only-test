@@ -23,16 +23,8 @@ export const useCircleAnimation = (
             setRotationAngle(newRotationAngle);
         }
 
-        const swiperWrapper = sliderRef.current?.swiper.wrapperEl;
-
         const duration = CIRCLE_ROTATION_TIME;
         const ease = EASE_FUNCTION;
-
-        swiperWrapper &&
-            gsap.to(swiperWrapper, {
-                transform: 'translateX(0)',
-                delay: duration,
-            });
 
         themeHeaderRef.current &&
             gsap.to(themeHeaderRef.current, {
@@ -58,10 +50,14 @@ export const useCircleAnimation = (
             onComplete: () => {
                 const newEvents = periodsArr[selectedNum - 1].events;
                 setSliderEvents(newEvents);
+                sliderRef.current.swiper.slideTo(0, 0);
 
                 gsap.fromTo(
                     sliderRef.current,
-                    { opacity: 0, top: 15 },
+                    {
+                        opacity: 0,
+                        top: 15,
+                    },
                     {
                         opacity: 1,
                         top: 0,
