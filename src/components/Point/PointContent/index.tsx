@@ -1,5 +1,6 @@
+import { CIRCLE_ROTATION_TIME } from '@constants/constants';
 import styled from 'styled-components';
-import { CIRCLE_ROTATION_TIME } from '../../../config/constants/constants';
+
 
 const PointContent = styled.div<{
     isActive: boolean;

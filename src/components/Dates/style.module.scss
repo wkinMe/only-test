@@ -1,3 +1,5 @@
+@import '@vars';
+
 .datesContainer {
     padding-top: 170px;
     max-width: 1440px;
@@ -20,7 +22,7 @@
         line-height: 120%;
         font-weight: 700;
         padding-left: 78px;
-        color: #42567a;
+        color: $darkBlue;
 
         &::before {
             position: absolute;
@@ -29,7 +31,7 @@
             content: '';
             width: 5px;
             height: 100%;
-            background: linear-gradient(180deg, #3877ee -5%, #ef5da8 85%);
+            background: linear-gradient(180deg, $blue -5%, $pink 85%);
         }
     }
 
@@ -42,16 +44,16 @@
         margin-top: 57px;
         padding-bottom: 25px;
 
-        border-bottom: 1px solid rgba(66, 86, 122, 0.5);
+        border-bottom: 1px solid $halfDarkBlue;
 
         span {
             font-size: 24px;
-            color: rgba(66, 86, 122, 1);
+            color: $darkBlue;
         }
     }
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: $mobileWidth) {
     .datesContainer {
         padding-top: 0;
         margin-left: 20px;

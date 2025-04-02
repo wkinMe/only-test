@@ -1,26 +1,23 @@
 import styles from './style.module.scss';
 
 import { gsap } from 'gsap/gsap-core';
-import Slider from '../Slider';
-import Circle from '../Circle';
-import { usePeriod } from '../../hooks/usePeriod';
-import { useCircle } from '../../hooks/useCircle';
-import { useYears } from '../../hooks/useYears';
-import Pagination from '../Pagination';
-import DatesText from '../DatesText';
+
 import { useRef, useState } from 'react';
 import { SwiperRef } from 'swiper/react';
-import {
-    CIRCLE_ROTATION_TIME,
-    EASE_FUNCTION,
-} from '../../config/constants/constants';
+
+import { usePeriod } from '@hooks/usePeriod';
+import { useCircle } from '@hooks/useCircle';
+import { useYears } from '@hooks/useYears';
+import Circle from '@components/Circle';
+import DatesText from '@components/DatesText';
+import Pagination from '@components/Pagination';
+import Slider from '@components/Slider';
+import { CIRCLE_ROTATION_TIME, EASE_FUNCTION } from '@constants/constants';
 
 export default function Dates() {
-    const { currentPeriodId, setCurrentPeriodId, periodsArr, periodsCount } =
-        usePeriod();
+    const { currentPeriodId, setCurrentPeriodId, periodsArr } = usePeriod();
     const { rotationAngle, setRotationAngle, points, radius } = useCircle(
         periodsArr,
-        periodsCount,
         currentPeriodId,
     );
     const { startDate, endDate } = useYears(periodsArr, currentPeriodId);
@@ -33,7 +30,7 @@ export default function Dates() {
     const sliderRef = useRef<SwiperRef>(null);
 
     const changePoint = (selectedNum: number) => {
-        const anglePerPoint = 360 / periodsCount;
+        const anglePerPoint = 360 / periodsArr.length;
         const steps = selectedNum - currentPeriodId;
         let newRotationAngle = rotationAngle - steps * anglePerPoint;
 
@@ -75,10 +72,9 @@ export default function Dates() {
             duration,
             ease,
             onComplete: () => {
-                console.log(selectedNum);
                 const newEvents = periodsArr[selectedNum - 1].events;
                 setSliderEvents(newEvents);
-
+                
                 gsap.fromTo(
                     sliderRef.current,
                     { opacity: 0, top: 15 },
@@ -100,7 +96,7 @@ export default function Dates() {
     };
 
     const handleNextClick = () => {
-        if (currentPeriodId < periodsCount) {
+        if (currentPeriodId < periodsArr.length) {
             changePoint(currentPeriodId + 1);
         }
     };
@@ -123,7 +119,7 @@ export default function Dates() {
             <div className={styles.sliderPaginationContainer}>
                 <Pagination
                     current={currentPeriodId}
-                    length={periodsCount}
+                    length={periodsArr.length}
                     handleNextClick={handleNextClick}
                     handlePrevClick={handlePrevClick}
                     handleBulletClick={(num) => setCurrentPeriodId(num)}

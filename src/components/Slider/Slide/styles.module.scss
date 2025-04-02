@@ -1,3 +1,5 @@
+@import '@vars';
+
 .slide {
     width: 320px;
     cursor: grab;
@@ -9,20 +11,20 @@
     gap: 15px;
 
     .year {
-        color: rgba(56, 119, 238, 1);
+        color: $blue;
         font-size: 25px;
         font-weight: 400;
         line-height: 120%;
     }
 
     .event {
-        color: rgba(66, 86, 122, 1);
+        color: $darkBlue;
         font-size: 20px;
         line-height: 30px;
     }
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: $mobileWidth) {
     .slide {
         width: 180px;
     }

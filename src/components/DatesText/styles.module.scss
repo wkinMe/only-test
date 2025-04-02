@@ -1,3 +1,5 @@
+@import '@vars';
+
 h1 {
     cursor: default;
     display: inline-flex;
@@ -11,15 +13,15 @@ h1 {
     line-height: 160px;
 
     & .dateStart {
-        color: #3877ee;
+        color: $blue;
     }
 
     & .dateEnd {
-        color: #ef5da8;
+        color: $pink;
     }
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: $mobileWidth) {
     h1 {
         position: static;
         display: inline;

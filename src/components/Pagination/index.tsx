@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import styles from './styles.module.scss';
-import { MOBILE_BREAKPOINT } from '../../config/constants/constants';
+import { MOBILE_BREAKPOINT } from '@constants/constants';
 
 interface PaginationProps {
     current: number;
