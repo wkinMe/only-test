@@ -1,0 +1,18 @@
+$darkBlue: rgba(66, 86, 122, 1);
+$blue: rgba(56, 119, 238, 1);
+$pink: rgba(239, 93, 168, 1);
+$halfBlue: rgba(56, 119, 238, 0.5);
+$halfDarkBlue: rgba(66, 86, 122, 0.5);
+
+$mobileWidth: 1000px;
+$circleAnimationTransition: all 0.3s ease-out;
+$pointAppearanceAnimation: activateButton 0.3s 0.4s ease-in-out forwards;
+
+@keyframes activateButton {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}

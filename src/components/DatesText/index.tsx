@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import styles from './styles.module.scss';
+import { CIRCLE_ROTATION_TIME, EASE_FUNCTION } from '@constants/constants';
 
 interface DatesTextProps {
     startDate: number;
@@ -11,36 +12,26 @@ export default function DatesText({ startDate, endDate }: DatesTextProps) {
     const startDateRef = useRef<HTMLSpanElement | null>(null);
     const endDateRef = useRef<HTMLSpanElement | null>(null);
 
-    // Инициализация состояния для отображаемых значений
-    const [displayedStartDate, setDisplayedStartDate] = useState<number>(0);
-    const [displayedEndDate, setDisplayedEndDate] = useState<number>(0);
+    const isInitialRender = useRef(true);
 
     useEffect(() => {
-        // Устанавливаем начальные значения в состояние
-        setDisplayedStartDate(startDate);
-        setDisplayedEndDate(endDate);
+        if (isInitialRender.current) {
+            isInitialRender.current = false;
+            return;
+        }
 
-        // Функция для анимации чисел
         const animateNumber = (element: HTMLSpanElement, newValue: number) => {
-            const currentValue = parseInt(element.textContent || '0', 10);
-            const duration = 1; // Длительность анимации
+            const currentValue = parseInt(element.textContent || '0');
 
-            // Если текущее значение не совпадает с новым, выполняем анимацию
             if (currentValue !== newValue) {
                 gsap.fromTo(
                     element,
                     { textContent: currentValue },
                     {
                         textContent: newValue,
-                        duration: duration,
-                        ease: 'power1.inOut',
                         snap: { textContent: 1 },
-                        onUpdate: () => {
-                            // Обновляем текст на каждом шаге анимации
-                            element.textContent = Math.round(
-                                parseFloat(element.textContent || '0'),
-                            ).toString();
-                        },
+                        duration: CIRCLE_ROTATION_TIME,
+                        ease: EASE_FUNCTION,
                     },
                 );
             }
@@ -54,13 +45,8 @@ export default function DatesText({ startDate, endDate }: DatesTextProps) {
 
     return (
         <h1>
-            {/* Отображаем значения из состояния */}
-            <span ref={startDateRef} className={styles.dateStart}>
-                {displayedStartDate}
-            </span>{' '}
-            <span ref={endDateRef} className={styles.dateEnd}>
-                {displayedEndDate}
-            </span>
+            <span ref={startDateRef} className={styles.dateStart}></span>{' '}
+            <span ref={endDateRef} className={styles.dateEnd}></span>
         </h1>
     );
 }

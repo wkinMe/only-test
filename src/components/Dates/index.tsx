@@ -1,66 +1,87 @@
 import styles from './style.module.scss';
 
-import Slider from '../Slider';
-import Circle from '../Circle';
-import { usePeriod } from '../../hooks/usePeriod';
-import { useCircle } from '../../hooks/useCircle';
-import { useYears } from '../../hooks/useYears';
-import Pagination from '../Pagination';
-import DatesText from '../DatesText';
+import { useRef } from 'react';
+import { SwiperRef } from 'swiper/react';
+
+import { usePeriod } from '@hooks/usePeriod';
+import { useCircle } from '@hooks/useCircle';
+import { useYears } from '@hooks/useYears';
+import { useCircleAnimation } from '@hooks/useCircleAnimation';
+import { usePaginationHandlers } from '@hooks/usePaginationHandlers';
+import { useSliderEvents } from '@hooks/useSliderEvents';
+
+import Circle from '@components/Circle';
+import DatesText from '@components/DatesText';
+import Pagination from '@components/Pagination';
+import Slider from '@components/Slider';
 
 export default function Dates() {
-    const { currentPeriodId, setCurrentPeriodId, periodsArr, periodsCount } =
+    const themeHeaderRef = useRef<HTMLDivElement>(null);
+    const sliderRef = useRef<SwiperRef>(null);
+    const isMobile = window.innerWidth < 1000;
+
+    const { currentPeriod, currentPeriodId, setCurrentPeriodId, periodsArr } =
         usePeriod();
+
     const { rotationAngle, setRotationAngle, points, radius } = useCircle(
         periodsArr,
-        periodsCount,
         currentPeriodId,
     );
+
     const { startDate, endDate } = useYears(periodsArr, currentPeriodId);
     
-    const currentEvents = periodsArr[currentPeriodId - 1].events;
+    const { sliderEvents, setSliderEvents } = useSliderEvents(
+        currentPeriod.events,
+    );
 
-    const changePoint = (selectedNum: number) => {
-        const anglePerPoint = 360 / periodsCount;
-        const steps = selectedNum - currentPeriodId;
-        let newRotationAngle = rotationAngle - steps * anglePerPoint;
+    const { changePoint } = useCircleAnimation(
+        periodsArr,
+        currentPeriodId,
+        setCurrentPeriodId,
+        rotationAngle,
+        setRotationAngle,
+        setSliderEvents,
+        isMobile,
+        sliderRef,
+        themeHeaderRef,
+    );
 
-        setCurrentPeriodId(selectedNum);
-        setRotationAngle(newRotationAngle);
-    };
-
-    const handlePrevClick = () => {
-        if (currentPeriodId > 1) {
-            changePoint(currentPeriodId - 1);
-        }
-    };
-
-    const handleNextClick = () => {
-        if (currentPeriodId < periodsCount) {
-            changePoint(currentPeriodId + 1);
-        }
-    };
+    const { handlePrevClick, handleNextClick } = usePaginationHandlers(
+        currentPeriodId,
+        periodsArr,
+        changePoint,
+    );
 
     return (
         <div className={styles.datesContainer}>
-            <h2>Исторические даты</h2>
             <div className={styles.content}>
-                <Circle
-                    points={points}
-                    radius={radius}
-                    rotationAngle={rotationAngle}
-                    changePoint={changePoint}
-                    currentPeriodId={currentPeriodId}
-                />
-                <DatesText startDate={startDate} endDate={endDate} />
+                <h2>Исторические даты</h2>
+                <div className={styles.contentContainer}>
+                    <Circle
+                        points={points}
+                        radius={radius}
+                        rotationAngle={rotationAngle}
+                        changePoint={changePoint}
+                        currentPeriodId={currentPeriodId}
+                    />
+                    <DatesText startDate={startDate} endDate={endDate} />
+                </div>
             </div>
-            <Pagination
-                current={currentPeriodId}
-                length={periodsCount}
-                handleNextClick={handleNextClick}
-                handlePrevClick={handlePrevClick}
-            />
-            <Slider events={currentEvents} />
+            <div className={styles.sliderPaginationContainer}>
+                <Pagination
+                    current={currentPeriodId}
+                    length={periodsArr.length}
+                    handleNextClick={handleNextClick}
+                    handlePrevClick={handlePrevClick}
+                    handleBulletClick={(num) => setCurrentPeriodId(num)}
+                />
+                <Slider events={sliderEvents} ref={sliderRef} />
+                {isMobile && (
+                    <div className={styles.themeHeader} ref={themeHeaderRef}>
+                        <span>{currentPeriod.theme}</span>
+                    </div>
+                )}
+            </div>
         </div>
     );
 }

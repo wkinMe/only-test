@@ -1,3 +1,4 @@
+import { CIRCLE_SIZE } from '@constants/constants';
 import styled from 'styled-components';
 
 const CircleContainer = styled.div`
@@ -5,8 +6,12 @@ const CircleContainer = styled.div`
     z-index: 2;
     left: 50%;
     transform: translateX(-50%);
-    width: 536px; // Увеличиваем ширину
-    height: 536px; // Увеличиваем высоту
+    width: ${CIRCLE_SIZE}px; // Увеличиваем ширину
+    height: ${CIRCLE_SIZE}px; // Увеличиваем высоту
+
+    @media screen and (max-width: 1000px) {
+        display: none;
+    }
 `;
 
 export default CircleContainer;

@@ -1,10 +1,10 @@
-import { useState } from "react";
-import periods from "../db/periods.json";
+import { useState } from 'react';
+import { periodService } from '@services/periodService';
 
-export const usePeriod  = () => {
+export const usePeriod = () => {
     const [currentPeriodId, setCurrentPeriodId] = useState(1);
-    const periodsArr = periods.periods;
-    const periodsCount = periodsArr.length;
+    const periodsArr = periodService.getPeriods();
+    const currentPeriod = periodsArr[currentPeriodId - 1];
 
-    return {currentPeriodId, setCurrentPeriodId, periodsArr, periodsCount}
-}
+    return { currentPeriodId, currentPeriod, setCurrentPeriodId, periodsArr };
+};

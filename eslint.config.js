@@ -28,6 +28,30 @@ export default tseslint.config(
                 'warn',
                 { allowConstantExport: true },
             ],
+            'simple-import-sort/imports': [
+                'warn',
+                {
+                    groups: [
+                        // Packages `react` related packages come first.
+                        ['^react', '^\\w', '^@hookform', '^@radix-ui'],
+                        // npm packages
+                        // Anything that starts with a letter (or digit or underscore), or `@` followed by a letter.
+                        // ['^\\w'],
+                        // Internal packages.
+                        ['^@components(/.*|$)'],
+                        ['^@hooks(/.*|$)'],
+                        []
+                        // Side effect imports.
+                        ['^\\u0000'],
+                        // Parent imports. Put `..` last.
+                        ['^\\.\\.(?!/?$)', '^\\.\\./?$'],
+                        // Other relative imports. Put same-folder imports and `.` last.
+                        ['^\\./(?=.*/)(?!/?$)', '^\\.(?!/?$)', '^\\./?$'],
+                        // Style imports.
+                        ['^.+\\.?(css)$'],
+                    ],
+                },
+            ],
         },
     },
 );

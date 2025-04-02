@@ -1,3 +1,5 @@
+@import '@vars';
+
 .point {
     position: relative;
     display: grid;
@@ -6,9 +8,9 @@
     width: 6px;
     height: 6px;
     cursor: pointer;
-    border: 1px solid rgba(66, 86, 122, 1);
+    border: 1px solid $darkBlue;
     border-radius: 50%;
-    transition: all 0.4s ease-in-out;
+    transition: $circleAnimationTransition;
 
     .description {
         opacity: 0;
@@ -23,9 +25,9 @@
         left: 0;
         width: 6px;
         height: 6px;
-        background-color: rgba(66, 86, 122, 1);
+        background-color: $darkBlue;
         border-radius: 50%;
-        transition: all 0.4s ease-in-out;
+        transition: $circleAnimationTransition;
     }
 
     &::after {
@@ -38,25 +40,25 @@
         height: 6px;
         background-color: rgba(255, 255, 255);
         border-radius: 50%;
-        transition: all 0.4s ease-in-out;
+        transition: $circleAnimationTransition;
     }
 
     .number {
         z-index: 3;
         line-height: 30px;
         font-size: 20px;
-        color: rgba(66, 86, 122, 1);
+        color: $darkBlue;
         position: absolute;
         left: -3px;
 
         opacity: 0;
-        transition: all 0.4s ease-in-out;
+        transition: $circleAnimationTransition;
     }
 
     .description {
-        transition: all 0.4s ease-in-out;
+        transition: $circleAnimationTransition;
         font-size: 20px;
-        color: rgba(66, 86, 122, 1);
+        color: $darkBlue;
         font-weight: 700;
     }
 
@@ -78,7 +80,7 @@
 
 .active {
     .number {
-        opacity: 1;
+        animation: $pointAppearanceAnimation;
     }
 
     &::before {
@@ -91,6 +93,6 @@
     }
 
     .description {
-        opacity: 1;
+        animation: $pointAppearanceAnimation;
     }
 }

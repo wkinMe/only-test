@@ -1,4 +1,4 @@
-import { PeriodItem } from '../types';
+import { PeriodItem } from '../config/types/types';
 
 export const useYears = (periodsArr: PeriodItem[], currentPeriodId: number) => {
     const years = periodsArr[currentPeriodId - 1].events.map((i) => i.year);
