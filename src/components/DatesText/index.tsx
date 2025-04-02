@@ -1,7 +1,9 @@
-import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
-import styles from './styles.module.scss';
+import { useEffect, useRef, useState } from 'react';
+
 import { CIRCLE_ROTATION_TIME, EASE_FUNCTION } from '@constants/constants';
+
+import styles from './styles.module.scss';
 
 interface DatesTextProps {
     startDate: number;

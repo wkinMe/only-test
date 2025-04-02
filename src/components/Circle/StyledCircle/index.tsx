@@ -1,5 +1,6 @@
-import { CIRCLE_SIZE } from '@constants/constants';
 import styled from 'styled-components';
+
+import { CIRCLE_SIZE } from '@constants/constants';
 
 const StyledCircle = styled.div<{ rotationAngle: number }>`
     position: absolute;

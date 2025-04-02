@@ -1,6 +1,8 @@
 import { useState } from 'react';
-import { PeriodItem } from '../config/types/types';
+
 import { CIRCLE_SIZE } from '@constants/constants';
+
+import { PeriodItem } from '../config/types/types';
 
 export const useCircle = (
     periodsArr: PeriodItem[],

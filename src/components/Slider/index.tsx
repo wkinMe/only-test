@@ -1,10 +1,11 @@
+import { FreeMode, Navigation } from 'swiper/modules';
 import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react';
-import { Navigation, FreeMode } from 'swiper/modules';
 
 import 'swiper/swiper-bundle.css';
 import './style.scss';
 
 import Slide from '@components/Slider/Slide';
+
 import { EventItem } from '../../config/types/types';
 
 interface SliderProps {

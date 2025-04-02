@@ -1,10 +1,10 @@
-import CircleContainer from "@components/Circle/CircleContainer";
-import { Point } from "../../config/types/types";
-import StyledCircle from "@components/Circle/StyledCircle";
-import PointWrapper from "@components/Point/PointWrapper";
-import PointContent from "@components/Point/PointContent";
-import CirclePoint from "@components/Point/CirclePoint";
+import CircleContainer from '@components/Circle/CircleContainer';
+import StyledCircle from '@components/Circle/StyledCircle';
+import CirclePoint from '@components/Point/CirclePoint';
+import PointContent from '@components/Point/PointContent';
+import PointWrapper from '@components/Point/PointWrapper';
 
+import { Point } from '../../config/types/types';
 
 interface CircleProps {
     points: Point[];

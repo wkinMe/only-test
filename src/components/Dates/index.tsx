@@ -1,19 +1,18 @@
-import styles from './style.module.scss';
-
 import { useRef } from 'react';
 import { SwiperRef } from 'swiper/react';
-
-import { usePeriod } from '@hooks/usePeriod';
-import { useCircle } from '@hooks/useCircle';
-import { useYears } from '@hooks/useYears';
-import { useCircleAnimation } from '@hooks/useCircleAnimation';
-import { usePaginationHandlers } from '@hooks/usePaginationHandlers';
-import { useSliderEvents } from '@hooks/useSliderEvents';
-
 import Circle from '@components/Circle';
 import DatesText from '@components/DatesText';
 import Pagination from '@components/Pagination';
 import Slider from '@components/Slider';
+
+import { useCircle } from '@hooks/useCircle';
+import { useCircleAnimation } from '@hooks/useCircleAnimation';
+import { usePaginationHandlers } from '@hooks/usePaginationHandlers';
+import { usePeriod } from '@hooks/usePeriod';
+import { useSliderEvents } from '@hooks/useSliderEvents';
+import { useYears } from '@hooks/useYears';
+
+import styles from './style.module.scss';
 
 export default function Dates() {
     const themeHeaderRef = useRef<HTMLDivElement>(null);
@@ -29,7 +28,7 @@ export default function Dates() {
     );
 
     const { startDate, endDate } = useYears(periodsArr, currentPeriodId);
-    
+
     const { sliderEvents, setSliderEvents } = useSliderEvents(
         currentPeriod.events,
     );

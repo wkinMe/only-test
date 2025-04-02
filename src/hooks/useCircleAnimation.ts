@@ -1,7 +1,10 @@
-import { CIRCLE_ROTATION_TIME, EASE_FUNCTION } from '@constants/constants';
 import { gsap } from 'gsap/gsap-core';
-import { EventItem, PeriodItem } from '../config/types/types';
 import { SwiperRef } from 'swiper/react';
+
+import { CIRCLE_ROTATION_TIME, EASE_FUNCTION } from '@constants/constants';
+
+import { EventItem, PeriodItem } from '../config/types/types';
+
 export const useCircleAnimation = (
     periodsArr: PeriodItem[],
     currentPeriodId: number,

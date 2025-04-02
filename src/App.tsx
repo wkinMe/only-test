@@ -1,11 +1,9 @@
-import './App.css'
-import Dates from './components/Dates'
+import './App.css';
+
+import Dates from './components/Dates';
 
 function App() {
-
-  return (
-    <Dates />
-  )
+    return <Dates />;
 }
 
-export default App
+export default App;

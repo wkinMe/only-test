@@ -5,7 +5,7 @@
     "version": "0.0.0",
     "type": "module",
     "scripts": {
-        "prettier": "prettier .",
+        "prettier": "prettier . --write",
         "dev": "vite",
         "build": "tsc -b && vite build",
         "lint": "eslint .",
