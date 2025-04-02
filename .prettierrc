@@ -2,5 +2,7 @@
   "singleQuote": true,
   "bracketSameLine": true,
   "jsxSingleQuote": true,
-  "tabWidth": 4
+  "tabWidth": 4,
+  "importOrder": ["^@db/(.*)$", "^@services/(.*)$", "^@components/(.*)$", "", "^@hooks/(.*)$", "", "^@constants/(.*)$", "", "^[./]"],
+  "plugins": ["@ianvs/prettier-plugin-sort-imports"]
 }
