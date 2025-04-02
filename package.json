@@ -1,4 +1,5 @@
 {
+    "homepage": "https://wkinMe.github.io/only-test",
     "name": "only-test",
     "private": true,
     "version": "0.0.0",
@@ -8,7 +9,8 @@
         "dev": "vite",
         "build": "tsc -b && vite build",
         "lint": "eslint .",
-        "preview": "vite preview"
+        "preview": "vite preview",
+        "deploy": "yarn run build && gh-pages -d dist"
     },
     "dependencies": {
         "clsx": "^2.1.1",
@@ -29,6 +31,7 @@
         "eslint-plugin-react-hooks": "^5.1.0",
         "eslint-plugin-react-refresh": "^0.4.19",
         "eslint-plugin-simple-import-sort": "^12.1.1",
+        "gh-pages": "^6.3.0",
         "globals": "^15.15.0",
         "prettier": "^3.5.3",
         "sass-embedded": "^1.86.0",
