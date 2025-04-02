@@ -12,15 +12,10 @@ export default function DatesText({ startDate, endDate }: DatesTextProps) {
     const startDateRef = useRef<HTMLSpanElement | null>(null);
     const endDateRef = useRef<HTMLSpanElement | null>(null);
 
-    const [displayedStartDate, setDisplayedStartDate] = useState<number>(startDate);
-    const [displayedEndDate, setDisplayedEndDate] = useState<number>(endDate);
-
-    // Флаг для отслеживания первого рендера
     const isInitialRender = useRef(true);
 
     useEffect(() => {
         if (isInitialRender.current) {
-            // Устанавливаем флаг в false после первого рендера
             isInitialRender.current = false;
             return;
         }
@@ -50,12 +45,8 @@ export default function DatesText({ startDate, endDate }: DatesTextProps) {
 
     return (
         <h1>
-            <span ref={startDateRef} className={styles.dateStart}>
-                {displayedStartDate}
-            </span>{' '}
-            <span ref={endDateRef} className={styles.dateEnd}>
-                {displayedEndDate}
-            </span>
+            <span ref={startDateRef} className={styles.dateStart}></span>{' '}
+            <span ref={endDateRef} className={styles.dateEnd}></span>
         </h1>
     );
 }
