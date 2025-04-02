@@ -1,8 +1,7 @@
 import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react';
 import { Navigation, FreeMode } from 'swiper/modules';
 
-import 'swiper/scss'; 
-import 'swiper/css/navigation';
+import 'swiper/swiper-bundle.css';
 import './style.scss';
 
 import Slide from '@components/Slider/Slide';

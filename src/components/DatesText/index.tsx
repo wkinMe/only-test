@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import styles from './styles.module.scss';
 import { CIRCLE_ROTATION_TIME, EASE_FUNCTION } from '@constants/constants';
@@ -12,8 +12,11 @@ export default function DatesText({ startDate, endDate }: DatesTextProps) {
     const startDateRef = useRef<HTMLSpanElement | null>(null);
     const endDateRef = useRef<HTMLSpanElement | null>(null);
 
-    const isInitialRender = useRef(true);
+    const [displayedStartDate] = useState<number>(startDate);
+    const [displayedEndDate] = useState<number>(endDate);
 
+    const isInitialRender = useRef(true);
+    
     useEffect(() => {
         if (isInitialRender.current) {
             isInitialRender.current = false;
@@ -45,8 +48,12 @@ export default function DatesText({ startDate, endDate }: DatesTextProps) {
 
     return (
         <h1>
-            <span ref={startDateRef} className={styles.dateStart}></span>{' '}
-            <span ref={endDateRef} className={styles.dateEnd}></span>
+            <span ref={startDateRef} className={styles.dateStart}>
+                {displayedStartDate}
+            </span>{' '}
+            <span ref={endDateRef} className={styles.dateEnd}>
+                {displayedEndDate}
+            </span>
         </h1>
     );
 }
